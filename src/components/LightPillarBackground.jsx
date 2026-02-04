@@ -3,8 +3,8 @@ function LightPillarBackground() {
     return (
 <div style={{ width: '100%', height: '1000px', position: 'relative' }}>
   <LightPillar
-    topColor="#110c55"
-    bottomColor="#9eb1ff"
+    topColor="#5227FF"
+    bottomColor="#FF9FFC"
     intensity={1}
     rotationSpeed={0.3}
     glowAmount={0.002}
