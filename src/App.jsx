@@ -1,12 +1,30 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Zap } from 'lucide-react';
 import { GroupCard } from './components/GroupCard';
 import { Greeting } from './components/Greeting'; // Import the new component
 import LightPillarBackground from './components/LightPillarBackground';
 
+const STORAGE_KEY = 'task-manager-tasks';
+
 export default function App() {
-  const [groups, setGroups] = useState([]); // Initial state is now an empty array
+  const [groups, setGroups] = useState(() => {
+    try {
+      const savedGroups = localStorage.getItem(STORAGE_KEY);
+      return savedGroups ? JSON.parse(savedGroups) : [];
+    } catch (error) {
+      console.error('Error loading groups from localStorage:', error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(groups));
+    } catch (error) {
+      console.error('Error saving groups to localStorage:', error);
+    }
+  }, [groups]);
 
   const { completedTasks, totalTasks, progress } = useMemo(() => {
     const allTasks = groups.flatMap(g => g.tasks);
