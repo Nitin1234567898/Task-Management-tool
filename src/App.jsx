@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Zap } from 'lucide-react';
 import { GroupCard } from './components/GroupCard';
+import { Greeting } from './components/Greeting'; // Import the new component
 import LightPillarBackground from './components/LightPillarBackground';
 
 export default function App() {
@@ -94,7 +95,7 @@ export default function App() {
               <GroupCard
                 key={group.id}
                 group={group}
-                onUpdateTitle={updateGroupTitle}
+                onUpdateTitle={updateGroupTItle}
                 onAddTask={addTask}
                 onToggleTask={toggleTask}
                 onDeleteGroup={deleteGroup}
@@ -102,11 +103,7 @@ export default function App() {
             ))}
           </AnimatePresence>
         </div>
-        {groups.length === 0 && (
-          <div className="fixed inset-0 flex items-center justify-center z-0">
-            <p className="text-gray-600 text-2xl font-light">Click the '+' to create a group.</p>
-          </div>
-        )}
+        {groups.length === 0 && <Greeting />}
       </main>
     </div>
   );
