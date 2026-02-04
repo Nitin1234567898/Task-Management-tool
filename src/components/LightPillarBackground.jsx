@@ -12,7 +12,7 @@ function LightPillarBackground() {
     pillarHeight={0.4}
     noiseIntensity={0.5}
     pillarRotation={25}
-    interactive={false}
+    interactive={true}
     mixBlendMode="screen"
     quality="high"
 />
