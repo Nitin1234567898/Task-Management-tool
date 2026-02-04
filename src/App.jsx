@@ -95,7 +95,7 @@ export default function App() {
               <GroupCard
                 key={group.id}
                 group={group}
-                onUpdateTitle={updateGroupTItle}
+                onUpdateTitle={updateGroupTitle}
                 onAddTask={addTask}
                 onToggleTask={toggleTask}
                 onDeleteGroup={deleteGroup}
